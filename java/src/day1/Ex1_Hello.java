@@ -1,18 +1,18 @@
 package day1;
 
 public class Ex1_Hello {
-	//ÄÜ¼Ö ÀÀ¿ë ÇÁ·Ò±×·¥ÀÌ ½ÇÇàµÇ±â À§ÇØ¼­ mainÀÌ¶ó´Â ¸Þ¼Òµå°¡ ÇÊ¿äÇÏ´Ù.
+	//ì½˜ì†” ì‘ìš© í”„ë¡œê·¸ëž¨ì´ ì‹¤í–‰ë˜ê¸° ìœ„í•´ì„œ mainì´ë¼ëŠ” ë©”ì†Œë“œê°€ í•„ìš”í•˜ë‹¤.
 	public static void main(String[] args) {
-	/*¿©·¯ÁÙ ÁÖ¼®
-	 * ÁÖ¼®1
-	 * ÁÖ¼®2
+	/*ì—¬ëŸ¬ì¤„ ì£¼ì„
+	 * ì£¼ì„1
+	 * ì£¼ì„2
 	 * */
-	//ÇÑ ÁÙ ÁÖ¼®Àº ¾Æ¹« À§Ä¡¿¡¼­ »ç¿ë°¡´É ÇÏÁö¸¸ Áß°£Àº ¾È µÊ
-	/* println(¹®ÀÚ¿­) : ¹®ÀÚ¿­À» ÄÜ¼Ö¿¡ Ãâ·ÂÇÑ ÈÄ ÁÙ¹Ù²ÞÀ» ÇÔ. (¿£ÅÍ È¿°ú)
-	 * print(¹®ÀÚ¿­) : ¹®ÀÚ¿­À» ÄÜ¼Ö¿¡ Ãâ·Â
+	//í•œ ì¤„ ì£¼ì„ì€ ì•„ë¬´ ìœ„ì¹˜ì—ì„œ ì‚¬ìš©ê°€ëŠ¥ í•˜ì§€ë§Œ ì¤‘ê°„ì€ ì•ˆ ë¨
+	/* println(ë¬¸ìžì—´) : ë¬¸ìžì—´ì„ ì½˜ì†”ì— ì¶œë ¥í•œ í›„ ì¤„ë°”ê¿ˆì„ í•¨. (ì—”í„° íš¨ê³¼)
+	 * print(ë¬¸ìžì—´) : ë¬¸ìžì—´ì„ ì½˜ì†”ì— ì¶œë ¥
 	 **/
 		System.out.print("Heloo world!!");
-        System.out.println("Hello world!!"); // ÇÑ ÁÙ ÁÖ¼®Àº, ÁÖ¼®±âÈ£°¡ ³ª¿Â ½ÃÁ¡ºÎÅÍ ÇØ´ç ¶óÀÎ ³¡±îÁö
-        System.out.print("Heloo world!!");
+	    System.out.println("Hello world!!"); // í•œ ì¤„ ì£¼ì„ì€, ì£¼ì„ê¸°í˜¸ê°€ ë‚˜ì˜¨ ì‹œì ë¶€í„° í•´ë‹¹ ë¼ì¸ ëê¹Œì§€
+	    System.out.print("Heloo world!!");	
 	}
 }
