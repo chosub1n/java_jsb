@@ -30,15 +30,12 @@ public class Ex7_NestedLoop2_Star {
 		 * */
 
 		for(int i = 1; i <= num; i++) {
-			//공백 출력 : 5-i
 			for(int j = 1; j<=num - i; j++) {
 				System.out.print(" ");
 			}
-			//*을 출력 : i
 			for(int j = 1; j<=i; j++) {
 				System.out.print("*");
 			}
-			//엔터 출력
 			System.out.println();
 		}
 
@@ -61,7 +58,7 @@ public class Ex7_NestedLoop2_Star {
 			//엔터 출력
 			System.out.println();
 		}
-
+		
 		/*     *		i=1 " "=4 *=1 *=0
 		 *    ** *		i=2 " "=3 *=2 *=1
 		 *   *** **		i=3 " "=2 *=3 *=2
@@ -78,6 +75,10 @@ public class Ex7_NestedLoop2_Star {
 			for(int j = 1; j<=i; j++) {
 				System.out.print("*");
 			}
+			//가운데 공백 출력 : j<=1
+			for(int j = 1; j<=1; j++) {
+				System.out.print(" ");
+			}			
 			//*을 출력 : i-1
 			for(int j = 1; j<=i-1; j++) {
 				System.out.print("*");
