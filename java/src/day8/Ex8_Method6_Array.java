@@ -5,10 +5,10 @@ public class Ex8_Method6_Array {
 	public static void main(String[] args) {
 		int arr[] = {1,2,3,4,5}; //[0]; -> 출력할 배열 없음.
 		int n = 3;
-		int num = 11;
+		int num = 4;
 		printArray(arr);
-		System.out.println(contains(arr, num));
-		System.out.println(contains(arr, 7, num));
+		System.out.println(contains(arr, arr.length, num));
+		System.out.println(contains(arr, n, num));
 	}
 	/* 기능 : 정수형 배열이 주어졌을 때, 주어진 배열의 값을 콘솔에 출력하는 메소드
 	 * 매개변수 : 정수형 배열 => int num[] 
