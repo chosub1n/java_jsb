@@ -42,12 +42,12 @@ select mo_title as 제목, ci_th_name as 영화관, ci_name as 상영관, sc_sta
     join cinema on sc_ci_num = ci_num 
     join seat on se_ci_num = ci_num
     left join book on sc_num = bo_sc_num -- 예매한 정보 좌석 정보는 없음
-    left join bookdetail on bo_num = bd_bo_num -- 좌석 정보를 얻기 위해 join 해주고 예약 여부에 상관없이 좌석을 기준으로 left join
+    left join bookdetail on bo_num = bd_bo_num and bd_se_num = se_num -- 좌석 정보를 얻기 위해 join 해주고 예약 여부에 상관없이 좌석을 기준으로 left join. 예약번호랑 좌석번호 둘 다 join해줘야 함!!
     where mo_title = '브로커' 
 		and ci_th_name = 'CGV청주성안길'
 		and sc_start_time like '2022-06-14 11:30:00'
 	group by 좌석명 -- 중복 방지를 위해 해줌
-    having count(bd_bo_num) = 0; -- 예약이 안 된 좌석들을 표시
+    having count(bd_bo_num) = 0; -- 예약이 안 된 좌석들만 표시.. 예약된 좌석도 표시하려면 '>= 0' 으로 표시해줘야 함.
 
 -- 브로커를 상영하는 모든 극장들을 조회
 -- 내가 짠 쿼리
