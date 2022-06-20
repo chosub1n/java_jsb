@@ -1,0 +1,22 @@
+<트리거> => 특정상황(insert, update, delete)이 되면 자동으로 실행 => 무결성
+-테이블에 대한 이벤트에 반응해 자동으로 실행되는 작업
+ - 이벤트 : insert, update, delete
+
+- 데이터 무결성을 지킬 수 있다. => 연관된 테이블간의 데이터를 유지할 수 있다.
+ - 제품을 구매 => 재고량 변경
+
+- 트리거 동작 시점
+ - before -> 이벤트가 발생하기 전에 트리거 동작
+ - after -> 이벤트가 발생한 후에 트리거 동작
+
+delimiter //
+create tigger 트리거명
+    트리거동작시점(before | after) 이벤트명(insert | update | delete)
+    on 테이블명 for each row
+begin
+-- 필요한 작업
+end //
+delimiter ;
+
+@@트리거 확인@@
+show triggers;
