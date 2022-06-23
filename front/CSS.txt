@@ -45,7 +45,7 @@ CSS(Cascadeing Style Sheet)
 
    - id 선택자
     - 해당 아이디와 일차하는 요소에 적용
-    - 아이디가 같은 요소는 1개여야 함
+    - 동일한 아이디를 가진 요소는 1개이하여야 함
     - #아이디명
     - #id{
       	color : red;
@@ -264,6 +264,122 @@ CSS(Cascadeing Style Sheet)
  - border
    - 모든 테두리 굵기, 종류, 색상을 한 번에 지정
 
+- margin
+ - 테두리 밖 여백
+ - 요소의 위치를 지정
+ - margin
+   - margin-top, margin-right, ,margin-bottom, margin-left를 순서대로 한 번에 적용 
+ - 두 요소의 margin이 겹치면 하나만 적용
+ - auto라는 값을 낼 수 있다.
+  - 조건
+     1. block 태그인 경우
+     2. 가로가 지정
+  - block 태그는 한 라인 전체에 공간을 할당
+    - width가 지정된 경우, width를 제외한 나머지 길이가 margin으로 잡힘
+    - auto로 지정하면 전체 가로에서 width를 제외한 나머지 여백을 반으로 나누어서
+       margin-left와 margin-right에 자동으로 할당
+ - 요소 좌우 가운데 정렬
+  - width지정 후, margin : 0 auto;
+
+- 둥근 테두리
+ - 박스의 테두리를 둥글게 만드는 속성
+ - border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius
+ - border-radius
+ - 버튼 생성할 때 많이 활용
+ - border-radiu는 길이의 반을 넘어가면 반으로 계산됨
+
+- 이미지 테두리
+ - 테두디를 이미지로 지정하는 속성
+ - border-image
+ - border-image : url(파일경로/파일명) 테두리이미지크기 타입;
+
+- 배경
+ - 배경색: background-color
+ - 배경 이미지: background-image
+ - 이미지 위치: background-position
+ - 배경 이미지 반복 여부: background-repeat
+ - 배경 이미지 크기: background-size
+ - background
+   - 배경과 관련된 속성들을 한 번에 사용하는 단축속성
+   - 배경색 배경이미지 배경위치/배경사이즈 배경반복
+
+- 그림자
+ - 텍스트 그림자
+  - text-shadow
+    - text-shadow : 수평 수직 번짐 색상 |none;
+      text-shadow : 수평 수직 번짐 색상 |none, 수평 수직 번짐 색상 |none;
+      - 수평: 글자를 기준으로 x축으로 떨어진 정도
+      - 수직: 글자를 기준으로 y축으로 떨어진 정도
+      - 번짐(blur): 그림자를 선명하게 보여줄건지, 흐리게 보여줄건지 결정하는 속성으로, px로 설정
+      - 색상: 그림자 색상
+      - ,를 이용하여 여러 그림자 효과를 한 번에 줄 수 있다.
+ 
+ - 박스 그림자
+  - box-shadow
+    -  box-shadow : 수평 수직 번짐 크기 색상 | none inset;
+      - 크기: 그림자 크기, 기본은 0, 생략 가능
+      - inset: 음각 박스로 보이게 하는 값, 생략 가능
+   - ,를 이용하여 여러 그림자 효과를 한 번에 줄 수 있다.
+ 
+- 마우스 커서
+ - cursor
+ - 마우스 모양을 제어
+ - cursor : auto | crosshair | default | pointer | move | ... | url;
+
+- 글자 관련 속성
+ - line-height
+   - 글자의 높이를 지정하는 속성
+   - 요소의 height가 지정되어있지 않으면 line-height를 이용하여 높이를 계산
+   - 글자를 위아래로 가운데 정렬할 때 사용
+ - white-space
+   - 공백 처리하는 방법
+   - normal
+     - 기본값
+     - 연속 공백(엔터포함)을 하나로 합침. 한 줄이 길어서 넘치면 자동으로 줄바꿈
+   - nowrap
+     - 연속 공백(엔터포함)을 하나로 합침. 줄바꿈은 br태그로만 일어남
+   - pre
+     - 연속 공백 유지. 줄바꿈은 br태그와 엔터로 일어남
+   - pre-wrap
+     - 연속 공백 유지. 줄바꿈은 br태그와 엔터로 일어남. 한 줄이 길어서 넘치면 자동으로 줄바꿈
+   - pre-line
+     - 연속 공백을 하나로 합침. 줄바꿈은 br태그와 엔터로 일어남. 한 줄이 길어서 넘치면 자동으로 줄바꿈
+   - break-spaces
+     - pre-wrap과 동일. 단, 아래 차이점을 제외
+       - 연속 공백이 줄의 끝에 위치해도 공백을 차지
+       - 연속 공백 중간과 끝에도 자동으로 줄을 바꿈
+
+ - letter-spacing: 글자 사이의 간격
+ - word-spacing: 문장 사이의 간격
+
+- display
+ - 요소의 display 설정하는 속성
+ - inline. block. inline-block. flex 등
+ - 태그의 기본종류(inline, block, inline-block)와 상관없이 다른 종류로 설정해줄 수 있다.
+
+- position
+ - 요소를 배치하는 방식을 설정
+ - 요소 배치는 기본적으로 웹페이지에 나타난 순서대로 배치 됨
+ - 이름 position을 통해 바꿀 수 있다.
+ - static
+  - 기본값
+ - relative
+  - 상대 배치
+  - 원래 있어야 할 위치를 기준으로 상대위치를 계산하여 배치
+  - top, bottom, left, right와 같이 사용 됨
+  - absolute와 같이 사용됨
+   - 자손 요소 중에 absolute가 있고, 요소가 기준이 될 때 기준이 되는 조상 요소를 relative로 설정
+ - absolute
+  - 절대 배치
+  - 웹페이지 특정 위치에 고정
+  - 조상 요소 중에 position이 absolute나 relative가 없으면 브라우저를 기준으로 배치
+  - 있으면 가장 가까운 조상요소를 기준으로 배치
+ - fixed
+  - 고정 배치
+  - 브라우저 특정 위치에 고정
+  - 위로가기 버튼
+
+
 
 @@표준단위@@
 - em : 요소의 기본값의 배수, 3em =>기본값의 3배
@@ -276,3 +392,20 @@ CSS(Cascadeing Style Sheet)
 - pt : 포인터, 1/72인치
 - pc : 피카소, 12pt
 - deg : 각도
+- vh : view height. 브라우저 화면의 높이를 100으로 나눈 값. 100vh 브라우저 화면의 높이 
+- vw : view width. 브라우저 화면의 너비를 100으로 나눈 값. 100vw 브라우저 화면의 너비
+
+@@calc()함수@@
+- 단위가 다른 값들을 계산할 때 사용
+- 연산자 앞 뒤로 무조건 공백을 넣어야 함
+  - 연산자 앞 뒤로 공백을 넣지 않으면 계산을 못함
+  - 예: clac(50% - 200px)
+
+@@url함수@@
+- url 경로나 파일 경로를 가져오는 함수
+- " 또는 "" 를 써도 되고 생략해도 됨
+
+@@inline-block 요소@@
+- inline-block 요소가 나열되어 있을 때 안에 있는 컨텐츠가 다른 경우 어긋날 수 있다.
+  - 이를 해결하기 위해 float을 이용
+-  inlie-block 요소가 나열되어 있을 때 엔터에 의한 공백이 생김
