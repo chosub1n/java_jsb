@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>네이버 테마 캐스트</title>
+	<style>
+		*     {padding: 0; margin: 0; color: #202020;}
+		ul, ol{ list-style: none;}
+		a     { text-decoration: none;}
+		.container  { 
+			width: 750px; margin-left: 50px;
+			letter-spacing: -.25px; line-height: 16px;
+		}
+		.top { margin-bottom: 17px;}
+		.top-left   { float: left; font-size: 0px;}
+		.top-right  { float: right;}
+		.top::after { clear: both; display: block; content: '';}
+		.top-left1	{ font-weight: bold; font-size: 14px; line-height: 16px; color: #000;}
+		.top-left2  { font-size: 12px; color: grey; line-height: 16px; margin-left: 8px;}
+		.top-right1 { font-size: 12px; color: grey;}
+		.bold				{font-weight: bold; color: #000;}
+		.top-right2 { color: #505050; margin-left: 14px; position: relative; font-size: 12px;}
+		.top-right2::before{
+			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+			background-size: 457px 434px;
+			content: ''; width: 11px; height: 11px;
+			background-position: -444px -194px;
+			margin-right: 4px; vertical-align: -1px;
+    	display: inline-block; opacity: .7; 
+		}
+		.top-right2::after{
+			content: ''; width: 1px; height: 12px;
+    	position: absolute; background-color: #e4e8eb;
+			top: 2px; left: -8px; 
+		}
+		.top-right2:hover{
+			text-decoration: underline;
+		}
+		.top-right2:hover::before{
+			opacity: 1;
+		}
+		.bot-in{
+			position: relative; overflow: hidden;
+		}
+		.list-thema{
+			font-size: 0; line-height: 0; white-space: nowrap;
+		}
+		.list-thema::before{
+			content: ''; position: absolute;
+			top: 0; left: 0; right: 0; bottom: 0; 
+			border: 1px solid #dae1e6;
+		}
+		.item-thema{
+			width: 94px; display: inline-block; position: relative;
+		}
+		/* ::before를 이용하여 표현한 테두리(position:absolute) 위에 배치하기 위해 */
+		.item-thema:nth-child(8n+1){
+			width: 92px;
+		}
+		.btn-thema{
+			line-height: 49px; font-size: 13px;
+			display: block; border-right: 1px solid #dae1e6;
+			font-weight: bold;	text-align: center;
+		}
+		.btn-thema.enter:hover		{ color: #e65da0;}
+		.btn-thema.sports:hover 	{ color: #0147b5;}
+		.btn-thema.car:hover			{ color: #4a94e1;}
+		.btn-thema.webtoon:hover	{ color: #66c971;}
+		.btn-thema.economy:hover  { color: #35ae5e;}
+		.btn-thema.subscibe:hover { color: #5290ff;}
+		.btn-thema.receip:hover		{ color: #ebaa00;}
+		.btn-thema.living:hover		{ color: #c08d31;}
+		.btn-thema.book:hover			{ color: #42be6f;}
+		.btn-thema.beauty:hover		{ color: #8449ca;}
+
+		.btn-thema.enter.active		 { background-color: #e65da0;}
+		.btn-thema.sports.active 	 { background-color: #0147b5;}
+		.btn-thema.car.active			 { background-color: #4a94e1;}
+		.btn-thema.webtoon.active	 { background-color: #66c971;}
+		.btn-thema.economy.active  { background-color: #35ae5e;}
+		.btn-thema.subscibe.active { background-color: #5290ff;}
+		.btn-thema.receip.active	 { background-color: #ebaa00;}
+		.btn-thema.living.active	 { background-color: #c08d31;}
+		.btn-thema.book.active		 { background-color: #42be6f;}
+		.btn-thema.beauty.active	 { background-color: #8449ca;}
+		
+		.btn-thema.active,
+		.btn-thema.active:hover{
+			color: #fff;
+		}
+		.btn-thema.active{
+			margin: 0 -1px; border-radius: 1px;
+			box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+		}
+		.bot{position: relative;}
+		.btn-prev,
+		.btn-next{
+		width: 40px; height: 40px; position: absolute;
+    background-position: -128px -345px;
+		top: 6px; left: -23px; z-index: 10;
+		background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+		background-size: 457px 434px;
+		}
+		.btn-prev:hover{
+			background-position: -44px -345px;
+		}
+		.btn-next{
+		left: auto; right: -18px;
+    background-position: -86px -345px; 
+		}
+		.btn-next:hover{
+			background-position: -170px -345px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="top">
+			<div class="top-left">
+				<span class="top-left1">오늘 읽을만한 글</span>
+				<span class="top-left2">주제별로 분류된 다양한 글 모음</span>
+			</div>
+			<div class="top-right">
+				<span class="top-right1"><span class="bold">676</span> 개의 글</span>
+				<a href="#" class="top-right2">관심주제 설정</a>
+			</div>
+		</div>
+		<div class="bot">
+			<div class="bot-in">
+				<ul class="list-thema">
+					<li class="item-thema">
+						<a href="#" class="btn-thema enter">엔터</a>
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema sports">스포츠</a>
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema car active">자동차</a>
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema webtoon">웹툰</a>
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema economy">경제</a>
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema subscibe">추천·구독</a>
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema receip">레시피</a>
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema living">리빙</a>	
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema book">책방</a>		
+					</li>
+					<li class="item-thema">
+						<a href="#" class="btn-thema beauty">패션뷰티</a>
+					</li>
+				</ul>
+				</a>
+			</div>
+			<div class="box-btn">
+			<a href="#" class="btn-prev"></a>
+			<a href="#" class="btn-next"></a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
