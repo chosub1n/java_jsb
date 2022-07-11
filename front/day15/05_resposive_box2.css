@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+.container{
+	padding: 10px; background-color: yellow;
+}
+.container::after{
+	display: block; clear: both; content: '';
+}
+.box{
+	width: calc(50% - 5px); height: 50px; box-sizing: border-box;
+	border: 2px solid #000; float: left;
+}
+.box:nth-child(n+2){
+	margin-top: 10px;
+}
