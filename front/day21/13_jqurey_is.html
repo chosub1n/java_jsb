@@ -18,28 +18,39 @@
 	<div class="box"></div>
 	<div class="box"></div>
 	<script>
+		/*
+		// 내가 짠 코드
 		$(function(){
-			//1.btn 클릭 이벤트 등록
+			$('.btn').click(function(){
+				$('.box').animate({'right' : '-100px'},300) 
+				$('.box').animate({'bottom' : '-100px'},300) 
+				$('.box').animate({'left' : '0px'},300) 
+				$('.box').animate({'top' : '0px'},300) 
+			})
+		})
+		*/
+		$(function(){
+			//btn클릭 이벤트 등록
 			$('.btn').click(function(){
 				const box = $('.box');
-				//box가 멈춰있으면 실행, 아니면 아무것도 안함
+				//box가 멈춰있으면 실행, 아니면 아무것도 안 함
 				if(!box.is(':animated')){
 					//box를 오른쪽으로 움직이도록 애니메이션
-					box.animate({'left':'+=200px'}, 800);
+					box.animate({'left' : '+=200px'},800); 
 					//box를 아래로 움직이도록 애니메이션
-					box.animate({'top' : '+=200px'}, 800);
+					box.animate({'top' : '+=200px'},800); 
 					//box를 왼쪽으로 움직이도록 애니메이션
-					box.animate({'left' :'-=200px'}, 800);
+					box.animate({'left' : '-=200px'},800); 
 					//box를 위로 움직이도록 애니메이션
-					box.animate({'top' : '-=200px'}, 800);
+					box.animate({'top' : '-=200px'},800); 
 				}
 			})
 			//
 			$('.box').click(function(){
-				if($(this).index() == 2){
-					console.log('첫번째 요소입니다.')
+				if($(this).index() == 1){ //2로 바꾸면 '첫 번째 요소입니다.'가 콘솔에 출력됨.
+					console.log('첫 번째 요소입니다.')
 				}else{
-					console.log('첫번째 요소가 아닙니다.')
+					console.log('첫 번째 요소가 아닙니다.')
 				}
 			})
 			$('.ck').click(function(){
@@ -48,4 +59,4 @@
 		})
 	</script>
 </body>
-</html> 
+</html>
