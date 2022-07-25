@@ -29,7 +29,7 @@
 	}
 	.icon-search{
 		display: inline-block; width: 22px; height: 22px;
-		background-position: -420px 0;
+		background-position: -420px 0; vertical-align: top;
 	}
 
 	/* 네이버 로고 */
@@ -76,12 +76,12 @@
 		margin: 3px 3px 2px; background-position: -369px -299px; 
 		vertical-align: top;
 	}
-		.link-jr-naver:hover .icon-jr-naver{
+	.link-jr-naver:hover .icon-jr-naver{
 		background-position: -200px -330px;
 	}
-		.link-happybin:hover .icon-happybin{
-			background-position: -380px -199px; 
-		}
+	.link-happybin:hover .icon-happybin{
+		background-position: -380px -199px; 
+	}
 
 	/* 가상 키보드 */
 	.search-con .btn-kbd{
@@ -149,7 +149,7 @@
 		height: 52px; background: #fff;
 		border-top: 1px solid #e4e8eb;
 		box-shadow: 0 1px 3px 0 rgb(0, 0, 0, 0.12);
-		padding: 0 30px; margin: 0 auto;
+		padding: 0 30px; margin: 0 auto; position: relative;
 	}
 	.menu-con .box-menu{
 		padding: 11px 270px 11px 0; float: left;
@@ -171,7 +171,7 @@
 		color: #000;
 	}
 	.menu-con .list-menu.fixed .item-menu .link-menu{
-		color: #03c75a;
+		color: #03c75a; 
 	}
 	.menu-con .list-menu .mail::before{
 		content: ''; display: inline-block; width: 21px; height: 21px; 
@@ -192,6 +192,21 @@
 		content: ''; display: inline-block; width: 12px; height: 14px;
 		background-position: -444px -49px; vertical-align: top;
 		margin: 9px 2px 0 0;
+	}
+	/*더보기 서비스 박스 메뉴설정 클릭 후 상단 메뉴*/
+	.menu-con .list-menu.empty-box{
+		letter-spacing: -1px; display: none;
+	}
+	.menu-con .list-menu.empty-box .item-menu.box{
+		width: 68px; height: 28px;
+		border-radius: 2px; background-color: #f7f9fa; 
+		border: 1px solid #dae1e6;
+	}
+	.menu-con .list-menu.empty-box .item-menu+.item-menu{
+		margin-left: 8px;
+	}
+	.menu-con .list-menu.empty-box .box.first{
+		background-color: #fff; border-color: #19ce60;
 	}
 	/* 더보기 버튼 */
 	.menu-con .btn-more{
@@ -224,6 +239,109 @@
 	.menu-con .btn-more.fold::after{
 		background-position: -444px -330px;
 	}
+	/*더보기 서비스 박스*/
+	.menu-con .box-service{
+		background-color: white; min-height: 300px;
+		position: absolute; left: 0; right: 0; z-index: 100;
+		top: 52px; border-top: 1px solid #e4e8eb;
+		box-shadow: 0 4px 4px 0 rgb(0, 0, 0, 0.12);
+		display: none;
+ 	}
+	.menu-con .box-service .fixed-con{
+  	padding: 20px 30px 22px;
+	}
+	.menu-con .box-service .box-service-container{
+		border: 1px solid #e4e8eb; border-width: 0 1px; display: flex;
+	}
+	.menu-con .box-service .list-service{
+		height: 315px; box-sizing: border-box; width: 100%;
+		border-left: 1px solid white;
+		font-size: 13px; line-height: 26px; letter-spacing: -.25px;
+		padding: 0 14px 0 15px; white-space: nowrap;
+	}
+	.menu-con .box-service .list-service:first-child{
+		border-right: 1px solid white; 
+	}
+	.menu-con .box-service .list-service+.list-service{
+		border-left: 1px solid #e4e8eb;
+	}
+	.menu-con .box-service .title-service{
+		font-weight: bold; margin-bottom: 3px;
+	}
+	.menu-con .box-service .link-service{
+		color: #202020;
+	}
+	.menu-con .box-service .more-dic .link-service{
+		color: gray; margin-top: 5px; display: inline-block;
+	}
+	.menu-con .box-service .more-dic .link-service::after{
+		display: inline-block; width: 6px; height: 10px; content: '';
+		vertical-align: 0; margin-left: 7px;
+		background-position: -444px -368px;
+	}
+	.menu-con .box-service .label-service{
+		position: relative;
+	}
+	.menu-con .box-service .label-service>*{
+		font-size: 13px; line-height: 26px; white-space: nowrap;
+	}
+	.menu-con .box-service .input-service{
+		position: absolute; top: 0; left: 0;
+		opacity: 0; width: 16px; height: 16px;
+	}
+	.menu-con .box-service .input-service:focus{
+		opacity: 1;
+	}
+	.menu-con .box-service .icon-check{
+		width: 16px; height: 16px; display: inline-block;
+		background-position: -420px -365px;
+		vertical-align: top; margin: 4px 9px 0 0;
+	}
+	.menu-con .box-service .checked .icon-check{
+    background-position: -420px -347px;
+	}
+	.menu-con .box-service .link-service:hover{
+		text-decoration: underline;
+	}
+	.menu-con>.fixed-con{
+		position: relative;
+	}
+	.menu-con .box-btn{
+		top: 0; right: 30px; width: 270px; 
+		padding: 11px 0; position: absolute;
+    z-index: 10; text-align: right;
+		background-color: #fff; font-size: 12px;
+		display: none;
+	}
+	.menu-con .box-btn a{  /*a는 모든 a태그를 말함.*/
+		display: inline-block; padding: 7px 13px 5px;
+    margin-left: 3px; border-radius: 15px;
+    background-color: #fff; color: #202020;
+    border: 1px solid #dae1e6; font-size: 12px;
+		line-height: 16px;
+	}
+	.menu-con .box-btn a:hover{
+		text-decoration: underline;
+	}
+	.menu-con .box-btn .btn-set::before{
+		display: inline-block; width: 11px; height: 11px;
+    vertical-align: top; content: '';
+    margin: 2px 5px 0 0;
+    background-position: -444px -142px;
+	}
+	/*더보기 서비스 박스 메뉴설정 클릭 -> 초기화, 저장 버튼*/
+	.menu-con .box-btn .btn-save{
+		background-color: #19ce60;
+    border-color: #00c73c; color: #fff;
+	}
+	.menu-con .box-btn .btn-init::before{
+		display: inline-block; width: 10px; height: 13px;
+    vertical-align: top; content: ''; margin-right: 6px;
+    background-position: -444px -114px;
+	}
+	.menu-con .box-btn .box-btn2{
+		display: none;
+	}
 
 	/* 컨텐츠 박스 */
 	.content-con.fixed-con{
@@ -246,15 +364,15 @@
 	}
 
 	 /* 왼쪽 2번째 박스(연합뉴스) */
-	 .content-con .box-left2{
+	.content-con .box-left2{
 		padding: 12px 15px 11px 15px; 
 		background-color: #f7f9fa; border: 1px solid #dae1e6;
 		line-height: 24px;
 	 }
-	 .content-con .box-left2 .box-issue{
+	.content-con .box-left2 .box-issue{
 		float: left;
 	 }
-	 .content-con .box-left2 .box-direct{
+	.content-con .box-left2 .box-direct{
 		float: right; font-weight: bold;
 	 }
 	.content-con .box-left2 .link-media{
@@ -914,7 +1032,9 @@
 	.content-con .box-right2 .exchange .name::before,
 	.bg-img,
 	.bg-img::after,
-	.bg-img::before{
+	.bg-img::before,
+	.bg-img-after::after,
+	.bg-img-before::before{
 		background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 		background-size: 457px 434px;
 	}
@@ -935,4 +1055,8 @@
 	.content-con .box-right2 .link-timesquare::after,
 	.after::after{
 		clear: both; display: block; content: '';
+	}
+
+	.display-none{
+		display: none !important;
 	}
