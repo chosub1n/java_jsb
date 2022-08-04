@@ -84,6 +84,5 @@ public class HomeController {
 	    MemberVO dbMember2 = memberService.getMember(member);
 	    System.out.println(dbMember2);
 	    return mv;
-	   
 	}
 }
