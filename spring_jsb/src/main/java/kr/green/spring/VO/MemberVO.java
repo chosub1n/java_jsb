@@ -1,4 +1,4 @@
-package kr.green.spring.VO;
+package kr.green.spring.vo;
 
 import java.util.Date;
 
@@ -6,7 +6,6 @@ import lombok.Data;
 
 @Data
 public class MemberVO {
-	
 	private String me_id;
 	private String me_pw;
 	private char me_gender;
