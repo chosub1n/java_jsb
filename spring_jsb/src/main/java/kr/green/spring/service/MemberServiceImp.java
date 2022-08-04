@@ -7,7 +7,7 @@ import kr.green.spring.dao.MemberDAO;
 import kr.green.spring.vo.MemberVO;
 
 @Service
-public class MemberServiceImp {
+public class MemberServiceImp implements MemberService {
 	
 	@Autowired
 	MemberDAO memberDao;
@@ -39,6 +39,14 @@ public class MemberServiceImp {
 			return dbMember;
 		return null;
 
+	}
+	
+	@Override
+	public MemberVO getMember2(MemberVO member) {
+		if(member == null || member.getMe_id() == null || member.getMe_pw() == null)
+			return null;
+
+		return memberDao.selectMember2(member);
 	}
 }	
 	

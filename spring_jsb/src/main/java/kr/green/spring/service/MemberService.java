@@ -9,5 +9,7 @@ public interface MemberService {
 	MemberVO getMember(String me_id);
 
 	MemberVO getMember(MemberVO member);
+	
+	MemberVO getMember2(MemberVO member);
 
 }
