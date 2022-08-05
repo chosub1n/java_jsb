@@ -19,7 +19,7 @@
 <body>
 ${user}
   <div class="container">
-  	<form action="<%=request.getContextPath()%>/singup" method="post">
+  	<form action="<%=request.getContextPath()%>/signup" method="post">
   	   <h1 class="text-center">회원가입</h1>
   	   <div class="form-group">
   	      <label for="me_id">아이디:</label>
@@ -53,11 +53,11 @@ ${user}
 	    </div>
 	    <div class="form-group">
   		  <label for="me_email">이메일</label>
-  		  <input type="text" class="form-control" id="me_eamil" name="me_eamil">
+  		  <input type="text" class="form-control" id="me_email" name="me_email">
 		</div>
 		<div class="form-group">
   		  <label for="me_birth">생년월일</label>
-  		  <input type="text" class="form-control" id="me_bitrh" name="me_bitrh">
+  		  <input type="text" class="form-control" id="me_birth" name="me_birth">
 		</div>
 		<button class="btn btn-outline-success col-12 mb-5">회원가입</button>
   	</form>
@@ -106,14 +106,14 @@ ${user}
             	required : "필수항목입니다."
             },
             me_pw2: {
-            	required : "필수항목입니다."
+            	required : "필수항목입니다.",
                 equalTo : "비밀번호와 비밀번호 확인이 일치하지 않습니다."
             },
             me_gender: {
             	required : "필수항목입니다."
             },
             me_email: {
-            	required : "필수항목입니다."
+            	required : "필수항목입니다.",
                 email : "이메일 형식에 맞지 않습니다."
             },
             me_birth: {
@@ -121,7 +121,7 @@ ${user}
             }
          }
      });
-  })
+  			})
 			$.validator.addMethod(
 		    	"regex",
 		    	function(value, element, regexp) {
