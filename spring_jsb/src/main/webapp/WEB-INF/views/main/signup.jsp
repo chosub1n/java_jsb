@@ -17,6 +17,7 @@
 </style>
 </head>
 <body>
+${user}
   <div class="container">
   	<form action="<%=request.getContextPath()%>/singup" method="post">
   	   <h1 class="text-center">회원가입</h1>
@@ -64,7 +65,7 @@
   
   <script type="text/javascript">
     $(function(){
-    	$( "#me_birth" ).datapicker({
+    	$( "#me_birth" ).datepicker({
     	      changeMonth: true,
     	      changeYear: true,
     	      dateFormat: 'yy-mm-dd',
