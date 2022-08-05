@@ -16,13 +16,13 @@
   <h1>로그인</h1>
     <div class="form-group">
       <label for="id">아이디:</label>
-      <input type="text" class="form-control" placeholder="아이디" name="id">
+      <input type="text" class="form-control" placeholder="아이디" name="me_id">
     </div>
     <div class="form-group">
       <label for="pw">비밀번호:</label>
-      <input type="password" class="form-control" placeholder="비밀번호" name="pw">
+      <input type="password" class="form-control" placeholder="비밀번호" name="me_pw">
     </div>
-    <button class="btn btn-outline-success col-12 mb-4">로그인</button>
+    <button class="btn btn-outline-success col-12 mb-3">전송</button>
   </form>
 </div>
 </body>
