@@ -26,12 +26,12 @@
         <tr>
           <td>${board.bd_num}</td>
           <td>
-          	<a href="<%=request.getContextPath()%>/board/select/${borad.bd_num}">${board.bd_title}</a>
+          	<a href="<%=request.getContextPath()%>/board/select/${board.bd_num}">${board.bd_title}</a>
           </td>
           <td>${board.bd_me_id}</td>
           <td>${board.bd_reg_date_str}</td>
           <td>${board.bd_views}</td>
-          <td>${board.bd_up}/${board.bd_down}</td>
+          <td>${board.bd_up}/${board.bd_down }</td>
         </tr>
       </c:forEach>
     </tbody>

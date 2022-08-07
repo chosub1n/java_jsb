@@ -39,7 +39,7 @@ public class BoardController {
 	@RequestMapping(value="/board/insert", method=RequestMethod.POST)
 	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, HttpSession session){
 		//화면에서 전송한 데이터가 잘 오는지 확인
-		System.out.println(board);
+		//System.out.println(board);
 		//로그인한 회원 정보를 확인
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		//System.out.println(user);
@@ -49,7 +49,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/select/{bd_num}", method=RequestMethod.GET)
-	public ModelAndView boardselectGet(ModelAndView mv, @PathVariable("bd_num")Integer bd_num){
+	public ModelAndView boardSelectGet(ModelAndView mv, @PathVariable("bd_num")Integer bd_num){
 		//게시글 번호에 맞는 게시글 조회수를 증가
 		boardService.updateViews(bd_num);
 		//게시글 번호에 맞는 게시글 정보를 가져옴
@@ -90,7 +90,7 @@ public class BoardController {
 	 MemberVO user = (MemberVO) session.getAttribute("user");
 	 boardService.deleteBoard(bd_num, user);
 		
-	    mv.setViewName("redirect:/board/list/");
+	    mv.setViewName("redirect:/board/list");
 	    return mv;
 	}
 }

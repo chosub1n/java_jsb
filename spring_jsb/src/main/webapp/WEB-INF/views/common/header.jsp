@@ -23,7 +23,7 @@
 		      	</li> 
 		      </c:if>
 		      <li class="nav-item">
-		        <a class="nav-link" href="<%=request.getContextPath()%>/>board/list">게시글</a>
+		        <a class="nav-link" href="<%=request.getContextPath()%>/board/list">게시글</a>
 		      </li>   
 	    	</ul>
 		</div> 
