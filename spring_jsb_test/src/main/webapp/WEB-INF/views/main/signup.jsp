@@ -23,7 +23,7 @@
       <input type="password" class="form-control" id="me_pw2" name="me_pw2">
     </div>
     <div class="form-group">
-      <label for="me_id">이메일:</label>
+      <label for="me_email">이메일:</label>
       <input type="text" class="form-control" id="me_email" name="me_email">
     </div>
     <div class="form-group">
