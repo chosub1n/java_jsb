@@ -19,4 +19,14 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.selectBoardList();
 	}
 
+	@Override
+	public BoardVO getBoard(int bd_num) {
+		return boardDao.selectBoard(bd_num);
+	}
+
+	@Override
+	public void updateViews(int bd_num) {
+		boardDao.updateViews(bd_num);	
+	}
+
 }
