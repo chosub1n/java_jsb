@@ -1,5 +1,7 @@
 package kr.green.springtest.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +20,6 @@ public class HomeController {
 	@RequestMapping(value="/")
     public ModelAndView openTilesView(ModelAndView mv){
         mv.setViewName("/main/home");
-        mv.addObject("setHeader", "타일즈");
-        System.out.println(memberService.getEmail("qwe"));
         return mv;
     }
 	
@@ -27,8 +27,7 @@ public class HomeController {
     public ModelAndView signupGet(ModelAndView mv){
         mv.setViewName("/main/signup");
         return mv;
-    }
-	
+    }	
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
     public ModelAndView signupPost(ModelAndView mv, MemberVO member) {
 		if(memberService.signup(member)) {
@@ -38,6 +37,22 @@ public class HomeController {
 		}
         return mv;
     }
-
+	
+	@RequestMapping(value = "/login", method=RequestMethod.GET)
+	public ModelAndView loginGet(ModelAndView mv) {
+		mv.setViewName("/main/login");
+        return mv;
+	}
+	@RequestMapping(value = "/login", method=RequestMethod.POST)
+	public ModelAndView loginPost(ModelAndView mv, MemberVO member) {
+		MemberVO user = memberService.login(member);
+		if(user != null)
+			mv.setViewName("redirect:/");
+		else
+			mv.setViewName("redirect:/login");
+		mv.addObject("user", user);
+        return mv;
+	}
+	
 	
 }

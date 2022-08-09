@@ -9,15 +9,14 @@
 	  		</button>
 	  		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 	    	  <ul class="navbar-nav">
+	    	  	<c:if test="${user == null}">
 		      	  <li class="nav-item">
 		        	  <a class="nav-link" href="<c:url value="/signup"></c:url>">회원가입</a>
 		      	  </li>
 			      <li class="nav-item">
-			          <a class="nav-link" href="#">Link</a>
+			          <a class="nav-link" href="<c:url value="/login"></c:url>">로그인</a>
 			      </li>
-			      <li class="nav-item">
-			          <a class="nav-link" href="#">Link</a>
-			      </li>    
+			    </c:if>      
 		      </ul>
 		  </div> 
 	  </div> 
