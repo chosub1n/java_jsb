@@ -54,5 +54,11 @@ public class HomeController {
         return mv;
 	}
 	
+	@RequestMapping(value = "/logout")
+	public ModelAndView logout(ModelAndView mv, HttpSession session) {
+		session.removeAttribute("user");
+		mv.setViewName("redirect:/");
+        return mv;
+	}
 	
 }
