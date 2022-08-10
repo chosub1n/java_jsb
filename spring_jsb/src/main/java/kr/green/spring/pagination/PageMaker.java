@@ -3,7 +3,7 @@ package kr.green.spring.pagination;
 import lombok.Data;
 
 @Data
-public class pageMeker {
+public class PageMaker {
 	private int totalCount; //전체 컨텐츠 개수(전체 페이지에서 마지막 페이지 번호를 구하기 위해)
 	private int startPage;  //시작 페이지 번호(현재 페이지네이션에서)
 	private int endPage;    //마지막 페이지 번호(현재 페이지네이션에서)
@@ -44,7 +44,7 @@ public class pageMeker {
 		//next = criteria.getPerPageNum() == endPage ? false : true;//현재 페이지가 마지막 페이지이면 다음버튼 비활성화
 	}
 	
-	public pageMeker(Criteria cri, int displayPageNum, int totalCount) {
+	public PageMaker(Criteria cri, int displayPageNum, int totalCount) {
 		this.cri = cri;
 		this.displayPageNum = displayPageNum;
 		this.totalCount = totalCount;

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.spring.pagination.Criteria;
-import kr.green.spring.pagination.pageMeker;
+import kr.green.spring.pagination.PageMaker;
 import kr.green.spring.service.BoardService;
 import kr.green.spring.vo.BoardVO;
 import kr.green.spring.vo.MemberVO;
@@ -30,7 +30,7 @@ public class BoardController {
 		int totalCount = boardService.getTotalCount();
 		//등록된 게시글을 가져옴(여러 개)
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
-		pageMeker pm = new pageMeker(cri, 5, totalCount);		
+		PageMaker pm = new PageMaker(cri, 5, totalCount);		
 		mv.addObject("pm", pm);
 		mv.addObject("list", list);
 	    mv.setViewName("/board/list");
