@@ -151,48 +151,47 @@
 		</dependency>
 		<!-- mybatis 의존성 추가 -->
 		<dependency>
-	    <groupId>org.mybatis</groupId>
-	    <artifactId>mybatis</artifactId>
-	    <version>3.5.10</version>
+	      <groupId>org.mybatis</groupId>
+	      <artifactId>mybatis</artifactId>
+	      <version>3.5.10</version>
 		</dependency>
 		<!-- mybatis-spring 의존성 추가 -->
 		<dependency>
-	    <groupId>org.mybatis</groupId>
-	    <artifactId>mybatis-spring</artifactId>
-	    <version>2.0.7</version>
+	      <groupId>org.mybatis</groupId>
+	      <artifactId>mybatis-spring</artifactId>
+	      <version>2.0.7</version>
 		</dependency>
 		<!-- mysql-connector-java 의존성 추가 -->
 		<dependency>
 	    <groupId>mysql</groupId>
-	    <artifactId>mysql-connector-java</artifactId>
-	    <version>8.0.30</version>
+	      <artifactId>mysql-connector-java</artifactId>
+	      <version>8.0.30</version>
 		</dependency>
 		<!-- spring-jdbc 추가 -->
 		<dependency>
-	    <groupId>org.springframework</groupId>
-	    <artifactId>spring-jdbc</artifactId>
-	    <version>${org.springframework-version}</version>
+	      <groupId>org.springframework</groupId>
+	      <artifactId>spring-jdbc</artifactId>
+	      <version>${org.springframework-version}</version>
 		</dependency>
 		
 		<!--스프링시큐리티 web 라이브러리-->
 		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-web</artifactId>
-		    <version>4.1.0.RELEASE</version>
+		   <groupId>org.springframework.security</groupId>
+		   <artifactId>spring-security-web</artifactId>
+		   <version>4.1.0.RELEASE</version>
 		</dependency>
-		  <!--스프링시큐리티 core 라이브러리-->
+		<!--스프링시큐리티 core 라이브러리-->
 		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-core</artifactId>
-		    <version>4.1.0.RELEASE</version>
+		   <groupId>org.springframework.security</groupId>
+		   <artifactId>spring-security-core</artifactId>
+		   <version>4.1.0.RELEASE</version>
 		</dependency>
-		  <!--스프링시큐리티 config 라이브러리-->
+		<!--스프링시큐리티 config 라이브러리-->
 		<dependency>
-		    <groupId>org.springframework.security</groupId>
-		    <artifactId>spring-security-config</artifactId>
-		    <version>4.1.0.RELEASE</version>
+		   <groupId>org.springframework.security</groupId>
+		   <artifactId>spring-security-config</artifactId>
+		   <version>4.1.0.RELEASE</version>
 		</dependency>
-		        
   	 </dependencies>
     <build>
         <plugins>
