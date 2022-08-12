@@ -9,7 +9,7 @@
 <body>
 <div class="container">
   <h1>회원가입</h1>
-  <form>
+  <form method="post">
     <div class="form-group">
       <label for="me_id">아이디:</label>
       <input type="text" class="form-control" id="me_id" name="me_id">
