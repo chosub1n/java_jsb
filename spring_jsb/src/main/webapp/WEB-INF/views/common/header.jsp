@@ -24,6 +24,9 @@
 		      </c:if>
 		      <li class="nav-item">
 		        <a class="nav-link" href="<%=request.getContextPath()%>/board/list">게시글</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="<%=request.getContextPath()%>/board/list2">게시글(ajax)</a>
 		      </li>   
 	    	</ul>
 		</div> 
