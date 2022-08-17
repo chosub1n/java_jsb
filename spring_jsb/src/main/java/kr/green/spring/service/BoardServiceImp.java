@@ -187,6 +187,6 @@ public class BoardServiceImp implements BoardService {
 
 	@Override
 	public int getTotalCountComment(int co_bd_num) {		
-		return boardDao.selectTotalCountcomment(co_bd_num);
+		return boardDao.selectTotalCountComment(co_bd_num);
 	}
 }

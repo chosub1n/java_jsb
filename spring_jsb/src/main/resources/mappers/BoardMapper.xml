@@ -70,7 +70,7 @@
 		select * from comments where co_bd_num = #{co_bd_num} order by co_num desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
-	<select id="selectTotalCountcomment" resultType="int">
+	<select id="selectTotalCountComment" resultType="int">
 		select count(*) from comments where co_bd_num = #{co_bd_num}
 	</select>
 </mapper>

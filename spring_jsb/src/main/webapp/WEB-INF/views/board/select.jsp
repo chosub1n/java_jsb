@@ -81,7 +81,6 @@
   				else
   				  return;
   			}
-  			console.log(obj);
   			$.ajax({
 				async:true, 
 		        type:'POST',
