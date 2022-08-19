@@ -67,7 +67,7 @@ public class UploadFileUtils {
 	// \\2022\\08\\19\\UUID_파일명 =? /2022/08/19/UUID_파일명 으로 변환하는 메소드
 	private static String makeIcon(String uploadPath, String path, String fileName)
         	throws Exception{
-		String iconName = uploadPath + path + File.separator + fileName;
+		String iconName = path + File.separator + fileName;
 		return iconName.replace(File.separatorChar, '/');
 	}
 	public static boolean deleteFile(String uploadPath, String fileName) {
