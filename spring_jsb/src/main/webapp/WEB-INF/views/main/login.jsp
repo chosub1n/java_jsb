@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<title>Insert title here</title>
 </head>
 <body>
  <div class="container">
@@ -24,6 +21,8 @@
     </div>
     <button class="btn btn-outline-success col-12 mb-3">전송</button>
   </form>
+  <a href="<c:url value="/find?type=id"></c:url>">아이디 찾기</a>/
+  <a href="<c:url value="/find?type=pw"></c:url>">비밀번호 찾기</a>
 </div>
 </body>
 </html>
