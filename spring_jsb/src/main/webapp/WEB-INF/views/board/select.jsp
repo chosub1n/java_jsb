@@ -276,7 +276,7 @@
   			$(this).siblings('.co_content_reply').remove();
   			$(this).siblings('.btn-insert-reply').remove();
   			$(this).siblings('br').remove();
-  			$(this).siblings('.btn-comment-reply').show();
+  			$(this).siblings('.btn-comment-reply').show();//답글 보임
   			$(this).siblings('.btn-comment-update').show();//수정버튼 보임
   			$(this).siblings('.btn-comment-delete').show();//삭제버튼 보임
   			$(this).remove();
