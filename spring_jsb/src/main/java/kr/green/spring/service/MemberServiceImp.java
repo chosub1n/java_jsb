@@ -158,7 +158,8 @@ public class MemberServiceImp implements MemberService {
 		sendEmail(title, content, member.getMe_email());
 		
 		//새 비번을 회원 정보에 저장(암호화해서)
-		String encPW = passwordEncoder.encode(newPw);
+		String encPw = passwordEncoder.encode(newPw);
+		dbMember.setMe_pw(encPw);
 		memberDao.updateMember(dbMember);
 		
 		return true;
@@ -181,8 +182,8 @@ public class MemberServiceImp implements MemberService {
 			user.setMe_authority(member.getMe_authority());
 		//비밀번호가 있으면 암호화하여 저장
 		if(member.getMe_pw() != null && member.getMe_pw().length() != 0) {
-			String encPW = passwordEncoder.encode(member.getMe_pw());
-			user.setMe_pw(encPW);
+			String encPw = passwordEncoder.encode(member.getMe_pw());
+			user.setMe_pw(encPw);
 		}
 		memberDao.updateMember(user);
 	}

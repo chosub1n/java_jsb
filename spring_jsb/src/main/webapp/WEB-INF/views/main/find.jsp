@@ -115,7 +115,7 @@ $(function(){
 			async:true, 
 	        type:'POST',
 	        data: JSON.stringify(obj),
-	        url: '<%=request.getContextPath()%>/find/pw/',
+	        url: '<%=request.getContextPath()%>/find/pw',
 	        dataType:"json", 
 	        contentType:"application/json; charset=UTF-8",
 	        success : function(data){
