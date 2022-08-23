@@ -32,6 +32,12 @@ public interface BoardDAO {
 	void updateBoardLikes(@Param("bd_num")int li_bd_num);
 
 	void insertComment(@Param("co")CommentVO comment);
+
+	ArrayList<CommentVO> selectCommentList(@Param("bd_num")int bd_num, @Param("cri")Criteria cri);
+
+
+	int selectCommentTotalCount(@Param("bd_num")int bd_num);
+
 	
 
 }
