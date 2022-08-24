@@ -188,15 +188,20 @@
 		 	$('[name=co_content]').val('');
 		}
 		
-		function commentUpdateSuccess(data){
-			console.log(data);
-		}
-		
 		function commentDeleteSuccess(data){
 			if(data.res){
 				alert('댓글 삭제가 완료되었습니다.');
 			}else{
 				alert('댓글 삭제에 실패했습니다.');				
+			}
+			getCommentList(cri);
+		}
+		
+		function commentUpdateSuccess(data){
+			if(data.res){
+				alert('댓글 수정이 완료되었습니다.');
+			}else{
+				alert('댓글 수정에 실패했습니다.');				
 			}
 			getCommentList(cri);
 		}
@@ -212,7 +217,7 @@
 				str += 	 '</div>';
 				str +=	'<div class="btn-box">';
 				if(co.co_me_id == '${user.me_id}'){
-					str +=	'<button class="btn btn-outline-danger btn-co-update" style="display: block">수정</button>';
+					str +=	'<button data-target="'+co.co_num+'" class="btn btn-outline-danger btn-co-update" style="display: block">수정</button>';
 					str +=	'<button data-target="'+co.co_num+'" class="btn btn-outline-success btn-co-delete mt-1" style="display: block">삭제</button>';
 				}
 				str +=	'</div>';
@@ -220,6 +225,7 @@
 			}
 			//댓글들을 화면에 출력
 			$('.list-comment').html(str);
+			//댓글 삭제버튼 이벤트 등록
 			$('.btn-co-delete').click(function(){
 				let co_num = $(this).data('target');
 				let comment = {
@@ -227,6 +233,41 @@
 				}
 				ajaxPost(false, comment, '/ajax/comment/delete', commentDeleteSuccess)
 			});
+			//댓글 수정버튼 클릭 이벤트 등록
+			$('.btn-co-update').click(function(){
+				$('.btn-co-cancel').click();
+			 	let contentEl = $(this).parent().siblings('.media-body').children('p');
+			 	contentEl.hide();
+			 	let content = contentEl.text();
+			 	let str = '';
+			 	str += '<div class="form-group box-content">'
+			 	str += 		'<textarea class="form-control" rows="3">'+content+'</textarea>'
+			 	str += '</div>'
+			 	contentEl.after(str);
+			 	$(this).parent().hide();
+			 	let co_num = $(this).data('target');
+			 	str = '';
+			 	str += '<div class="btn-box2">'
+			 	str +=		'<button data-target="'+co_num+'" class="btn btn-outline-danger btn-co-complete" style="display: block">등록</button>';
+				str +=		'<button class="btn btn-outline-success btn-co-cancel mt-1" style="display: block">취소</button>';
+				str += '</div>'
+				$(this).parent().after(str);
+				$('.btn-co-complete').click(function(){
+					let co_num = $(this).data('target');
+					let co_content = $(this).parent().siblings('.media-body').find('textarea').val();
+					let obj = {
+						co_num : co_num,
+						co_content : co_content
+					}
+					ajaxPost(false, obj, '/ajax/comment/update', commentUpdateSuccess)
+				})
+				$('.btn-co-cancel').click(function(){
+					$(this).parent().siblings('.media-body').find('p').show();
+					$(this).parent().siblings('.media-body').find('.box-content').remove();					 
+					$(this).parent().siblings('.btn-box').show();
+					$(this).parent().remove();
+				})
+			})
 			
 			let pm = data.pm;
 			let pmStr = '';
