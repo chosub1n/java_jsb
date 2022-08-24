@@ -41,7 +41,9 @@
 	<beans:bean id="memberInterceptor" 
 		class="kr.green.springtest.interceptor.MemberInterceptor"></beans:bean>
 	<beans:bean id="guestInterceptor" 
-		class="kr.green.springtest.interceptor.GuestInterceptor"></beans:bean>		
+		class="kr.green.springtest.interceptor.GuestInterceptor"></beans:bean>
+	<beans:bean id="redirectInterceptor" 
+		class="kr.green.springtest.interceptor.RedirectInterceptor"></beans:bean>		
 	<interceptors>
 		<interceptor>
 			<mapping path="/login"/>
@@ -57,6 +59,10 @@
 			<mapping path="/login"/>
 			<mapping path="/signup"/>
 			<beans:ref bean="guestInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:ref bean="redirectInterceptor"/>
 		</interceptor>
  	</interceptors>
 	
