@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import kr.green.springtest.vo.BoardVO;
 import kr.green.springtest.vo.CommentVO;
+import kr.green.springtest.vo.FileVO;
 import kr.green.springtest.vo.LikesVO;
 import kr.green.springtest.vo.MemberVO;
 import kr.green.springtest.pagination.Criteria;
@@ -51,6 +52,9 @@ public class BoardController {
 		
 		LikesVO likes = boardService.getLikes(bd_num, user);
 		
+		ArrayList<FileVO> fileList = boardService.getFileList(bd_num);		
+		
+		mv.addObject("fileList", fileList);
 		mv.addObject("likes", likes);
 		mv.addObject("board", board);
 		mv.setViewName("/board/select");
