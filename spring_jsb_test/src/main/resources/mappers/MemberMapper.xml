@@ -13,7 +13,7 @@
   
   <select id="selectId" resultType="String">
   	select me_id from member
-  		where me_email = #{m.me_email} and me_birth = #{me.me_birth_str}
+  		where me_email = #{m.me_email} and me_birth = #{m.me_birth_str}
   </select>
 </mapper>
 
