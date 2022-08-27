@@ -63,6 +63,14 @@ public class MemberServiceImp implements MemberService {
 		if(memberDao.selectMember(member.getMe_id()) != null)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String getId(MemberVO member) {
+		if(member == null)
+			return null;
+		
+		return memberDao.selectId(member);
 	}	
 
 }
