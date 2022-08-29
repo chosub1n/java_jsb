@@ -57,7 +57,8 @@
 	  			<c:forEach items="${fileList}" var="fi">
 	  				<a href="<c:url value="/file${fi.fi_name}"></c:url>" class="form-control" download="${fi.fi_ori_name}">${fi.fi_ori_name}</a>
 	  			</c:forEach>
-	  		</div>	
+	  		</div>
+			<a href="<c:url value="/board/insert?bd_ori_num=${board.bd_ori_num}&bd_depth=${board.bd_depth}&bd_order=${board.bd_order}"></c:url>" class="btn btn-outline-primary">답글</a>	
 			<hr>
 			<div class="list-comment">
 			  <div class="media border p-3">
