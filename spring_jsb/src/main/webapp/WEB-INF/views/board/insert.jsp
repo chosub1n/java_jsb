@@ -34,10 +34,10 @@
    tabsize: 2,
    height: 400,
    callbacks: {
-   		onImageUpload: function(files) {
-	    let data = new ForData();
+   		onImageUpload: function(files) {	
+	    let data = new FormData();
 	    data.append('file', files[0]);
-	    let thisobj = $(this)
+	    let thisObj = $(this)
 	    $.ajax({
 	    	data : data,
 	    	type : 'post',
@@ -47,7 +47,7 @@
 	    	dataType : "json",
 	    	success : function(data){
 	    		let url = '<%=request.getContextPath()%>/simg' + data.url;
-	    		thisobj.summernote('insertImage', url);
+	    		thisObj.summernote('insertImage', url);
 	    	}
 	    })
 	  }
