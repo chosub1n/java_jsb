@@ -44,6 +44,7 @@
 	<beans:bean id="memberInterceptor" class="kr.green.spring.interceptor.MemberInterceptor"></beans:bean>
 	<beans:bean id="guestInterceptor" class="kr.green.spring.interceptor.GuestInterceptor"></beans:bean>
 	<beans:bean id="redirectInterceptor" class="kr.green.spring.interceptor.RedirectInterceptor"></beans:bean>
+	<beans:bean id="autoLoginInterceptor" class="kr.green.spring.interceptor.AutoLoginInterceptor"></beans:bean>
 	
 	<interceptors>
 	    <interceptor>
@@ -66,7 +67,12 @@
 	      <mapping path="/**"/>	      
 	      <beans:ref bean="redirectInterceptor"/>
 	    </interceptor>
+	    <interceptor>
+	      <mapping path="/**"/>	      
+	      <beans:ref bean="autoLoginInterceptor"/>
+	    </interceptor>
 	</interceptors>
+	
 	
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
     	<!-- 업로드 최대 크기 10Mb -->
