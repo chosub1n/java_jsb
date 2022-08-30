@@ -40,6 +40,7 @@
 	  			<label for="">조회수:</label>
 	  			<input type="text" class="form-control" readonly value="${board.bd_views}">
 			</div>
+			<c:if test="${likes.li_state == 1}">red</c:if>
 			<div class="form-group">
 				<button class="btn btn-up <c:if test="${likes.li_state == 1}">red</c:if>" data-value="1"><i class="fa-solid fa-thumbs-up"></i></button>
 				<button class="btn btn-down <c:if test="${likes.li_state == -1}">red</c:if>" data-value="-1"><i class="fa-solid fa-thumbs-down"></i></button>
@@ -64,8 +65,12 @@
 			  <div class="media border p-3">
 			    <div class="media-body">
 			      <h4>John Doe <small><i>February 19, 2016</i></small></h4>
-			      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+			      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+			      <div class="form-group">      
+			      	<textarea class="form-control" rows="" cols=""></textarea>
+			      </div>
 			    </div>
+			    <button class="btn btn-outline-danger" style="display: block">답글</button>
 			    <div class="btn-box">
 			    	<button class="btn btn-outline-danger" style="display: block">수정</button>
 			    	<button class="btn btn-outline-success mt-1" style="display: block">삭제</button>
@@ -139,8 +144,8 @@
 		//댓글
 		$(function(){
 			$('.btn-co-insert').click(function(){
-				//아이디 체크
 				let co_me_id = '${user.me_id}';
+				//아이디 체크
 				if(co_me_id == ''){
 					//로그인 화면으로 이동할 지 물어봄
 					if(confirm('로그인이 필요한 서비스입니다. \n로그인 화면으로 이동하시겠습니까?')){
@@ -166,7 +171,65 @@
 				ajaxPost(false, obj, '/ajax/comment/insert', commentInsertSuccess);
 					
 			})
+			//댓글에 있는 답글 버튼 클릭
+			$(document).on('click','.btn-co-reply',function(){
+				let co_me_id = '${user.me_id}';
+				//아이디 체크
+				if(co_me_id == ''){
+					//로그인 화면으로 이동할 지 물어봄
+					if(confirm('로그인이 필요한 서비스입니다. \n로그인 화면으로 이동하시겠습니까?')){
+						//로그인 화면으로 이동
+						location.href = '<%=request.getContextPath()%>/login'
+						return;
+					}else{
+						return;
+					}
+				}
+				$('.btn-co-cancel').click();
+				$('.btn-reply-cancel').click();
+				str = ''
+				str += '<div class="media p-3 box-reply">'
+				str +=	  '<div class="media-body">'
+				str +=  	'<div class="form-group">'
+				str +=		   '<textarea class="form-control" rows="5" name="co_reply_content"></textarea>'
+				str +=		'</div>'
+				str +=   '</div>'
+				str +=	 '<div class="box-btn">'
+				str +=	 	'<button class="btn btn-outline-danger btn-reply-complete" style="display: block">등록</button>'
+				str +=	 	'<button class="btn btn-outline-success mt-1 btn-reply-cancel" style="display: block">취소</button>'
+				str +=	 '</div>'
+				str += '</div>'
+				$(this).parent().siblings('.media-body').append(str);
+				$(this).parent().hide(); //답글, 수정, 삭제버튼 감춤
+			})
 			
+			//댓글 등록 버튼 클릭
+			$(document).on('click', '.btn-reply-complete', function(){
+				//댓글 내용 체크
+				let co_content = $('[name=co_reply_content]').val()
+				//댓글 내용이 비었으면 입력하라고 함
+				if(co_content == ''){
+					alert('댓글 내용을 입력하세요.');
+					$('[name=co_reply_content]').focus();
+					return;
+				}
+				let co_ori_num = $(this).parents('.comment-body').find('.btn-co-reply').data('orinum');
+				let co_depth = $(this).parents('.comment-body').find('.btn-co-reply').data('depth');
+				let co_order = $(this).parents('.comment-body').find('.btn-co-reply').data('order');
+				let obj = {
+						co_content : co_content,
+						co_bd_num : '${board.bd_num}',
+						co_ori_num : co_ori_num,
+						co_depth : co_depth,
+						co_order : co_order
+				}
+				ajaxPost(false, obj, '/ajax/comment/insert', commentInsertSuccess);	
+			})
+			//댓글 취소 버튼 클릭
+			$(document).on('click', '.btn-reply-cancel', function(){
+				$(this).parents('.comment-body').find('.btn-box').show(); //답글, 수정, 삭제버튼 보여줌
+				$(this).parents('.box-reply').remove(); //답글창, 등록, 취소버튼을 삭제
+			})
 			getCommentList(cri);
 		})
 	
@@ -216,13 +279,23 @@
 		function commentListSuccess(data){
 			let list = data.list;
 			let str = '';
+			//반복문을 이용하여 댓글들 구성
 			for(co of list){				 
-				str += '<div class="media border p-3">';
+				str += '<div class="media border p-3 comment-body">';
 				str += 	 '<div class="media-body">';
 				str += 		'<h4>'+co.co_me_id+'<small><i> '+co.co_reg_date_str+'</i></small></h4>';
-				str += 		'<p>'+co.co_content+'</p>';     
+				str += 		'<p>';
+				str +=		  '<span class="reply-icon">'
+				for(let i = 2; i<=co.co_depth; i++)
+					str+=		'-'
+				str +=			'</span>'	
+				str +=			'<span class="reply-content">'				
+				str += 			co.co_content;     
+				str +=			'</span>'	
+				str +=		 '</p>';	
 				str += 	 '</div>';
 				str +=	'<div class="btn-box">';
+				str +=   '<button data-orinum="'+co.co_ori_num+'" data-depth="'+co.co_depth+'" data-order="'+co.co_order+'" class="btn btn-outline-danger btn-co-reply" style="display: block">답글</button>'
 				if(co.co_me_id == '${user.me_id}'){
 					str +=	'<button data-target="'+co.co_num+'" class="btn btn-outline-danger btn-co-update" style="display: block">수정</button>';
 					str +=	'<button data-target="'+co.co_num+'" class="btn btn-outline-success btn-co-delete mt-1" style="display: block">삭제</button>';
@@ -243,9 +316,10 @@
 			//댓글 수정버튼 클릭 이벤트 등록
 			$('.btn-co-update').click(function(){
 				$('.btn-co-cancel').click();
+				$('.btn-reply-cancel').click();
 			 	let contentEl = $(this).parent().siblings('.media-body').children('p');
 			 	contentEl.hide();
-			 	let content = contentEl.text();
+			 	let content = contentEl.children('.reply-content').text();
 			 	let str = '';
 			 	str += '<div class="form-group box-content">'
 			 	str += 		'<textarea class="form-control" rows="3">'+content+'</textarea>'
@@ -259,6 +333,7 @@
 				str +=		'<button class="btn btn-outline-success btn-co-cancel mt-1" style="display: block">취소</button>';
 				str += '</div>'
 				$(this).parent().after(str);
+				//댓글 등록버튼 클릭
 				$('.btn-co-complete').click(function(){
 					let co_num = $(this).data('target');
 					let co_content = $(this).parent().siblings('.media-body').find('textarea').val();
@@ -268,6 +343,7 @@
 					}
 					ajaxPost(false, obj, '/ajax/comment/update', commentUpdateSuccess)
 				})
+				//댓글 취소버튼 클릭
 				$('.btn-co-cancel').click(function(){
 					$(this).parent().siblings('.media-body').find('p').show();
 					$(this).parent().siblings('.media-body').find('.box-content').remove();					 
