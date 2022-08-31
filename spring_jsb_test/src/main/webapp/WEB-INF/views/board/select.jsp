@@ -47,7 +47,7 @@
 			</div>
 			<div class="form-group">
 	  			<label for="">내용:</label>
-	  			<textarea class="form-control" rows="10" readonly>${board.bd_content}</textarea>
+	  			<div class="form-control" style="height:auto; min-height:400px;">${board.bd_content}</div>
 			</div>
 			<div class="form-group">
 	  			<label for="">첨부파일</label>
@@ -189,7 +189,6 @@
 				$('.btn-reply-cancel').click();
 				str = ''
 				str += '<div class="media p-3 box-reply">'
-				str +=	  '<div class="media-body">'
 				str +=  	'<div class="form-group">'
 				str +=		   '<textarea class="form-control" rows="5" name="co_reply_content"></textarea>'
 				str +=		'</div>'
