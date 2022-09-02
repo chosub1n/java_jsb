@@ -10,7 +10,7 @@
 	<c:if test="${title == null}">LG</c:if>
 </title>
 
-<link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"></c:url>">
+<link rel="shortcut icon" href="<c:url value="/resources/img/favicon.ico"></c:url>" type="image/x-icon">
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

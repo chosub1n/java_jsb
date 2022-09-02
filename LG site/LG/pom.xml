@@ -176,7 +176,7 @@
 		  <version>2.9.4</version>
 		</dependency>
 		
-		<!-- pom.xml -->
+		<!-- email.xml -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 		    <artifactId>spring-context-support</artifactId>
