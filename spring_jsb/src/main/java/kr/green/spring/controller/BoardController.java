@@ -36,7 +36,7 @@ public class BoardController {
 	@RequestMapping(value="/board/list", method=RequestMethod.GET)
 	public ModelAndView boardListGet(ModelAndView mv, Criteria cri){
 		cri.setPerPageNum(10);
-		System.out.println(cri);
+		//System.out.println(cri);
 		int totalCount = boardService.getTotalCount(cri);
 		//등록된 게시글을 가져옴(여러 개)
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
@@ -144,7 +144,7 @@ public class BoardController {
 	public Map<Object, Object> ajaxBoardList(@RequestBody Criteria cri) {
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		cri.setPerPageNum(2);
-		System.out.println(cri);
+		//System.out.println(cri);
 		int totalCount = boardService.getTotalCount(cri);
 		//등록된 게시글을 가져옴(여러 개)
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
