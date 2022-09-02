@@ -48,7 +48,7 @@ public class MemberServiceImp implements MemberService{
 			String title = "LG 사이트 회원가입을 축하합니다.";
 			String content = 
 				"이메일 인증을 하여 계정을 활성화 하세요. 아래 링크를 클릭해주세요.<br>" +
-				"<a href='http://localhost:8080/springlg/signup/check?me_code="+me_code+"&emaill="+member.getMe_email()+"'>" +
+				"<a href='http://localhost:8080/springlg/signup/check?me_code="+me_code+"&me_email="+member.getMe_email()+"'>" +
 					"http://localhost:8080/springlg/signup/check?me_code="+me_code+"&me_email="+member.getMe_email()+
 				"</a>";
 		sendEmail(title, content, member.getMe_email());	
@@ -120,8 +120,25 @@ public class MemberServiceImp implements MemberService{
 		if(user.getMe_pos() != 1)
 			return null;
 		
+		user.setAutoLogin(member.isAutoLogin());
+		
 		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw()))
 			return user;
 		return null;
+	}
+
+	@Override
+	public void updateMemberSession(MemberVO user) {
+		if(user == null || user.getMe_email() == null)
+			return;
+		memberDao.updateMemberSession(user);
+		
+	}
+
+	@Override
+	public MemberVO loginBySession(String me_s_id) {
+		if(me_s_id == null)
+			return null;
+		return memberDao.selectBySession(me_s_id);
 	}
 }
