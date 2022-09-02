@@ -110,7 +110,7 @@
  );
   
  $(function(){
- 	$('[name=me_eamil]').on('input',function(){
+ 	$('[name=me_email]').on('input',function(){
  		idCheck = false;
  		let me_email = $(this).val();
  		console.log(me_email)
@@ -118,9 +118,9 @@
  			return;
  		
  		let obj = {
- 			me_eamil : me_email
+ 			me_email : me_email
  		}
- 		ajaxPost(false, obj, '/check/eamil', function(data){
+ 		ajaxPost(false, obj, '/check/email', function(data){
  			idCheck = data.res;
  		})
  	})
@@ -129,17 +129,17 @@
  
 function ajaxPost(async, dataObj, url, success){
 	$.ajax({
-		async: async, 
-		type : 'post',
-		data: JSON.stringify(dataObj),
-		url : "<%=request.getContextPath()%>"+url,
-		dataType: "json",
+		async:async, 
+		type:'POST',
+		data:JSON.stringify(dataObj),
+		url:"<%=request.getContextPath()%>"+url,
+		dataType:"json",
 		contentType:"application/json; charset=UTF-8",
 		success : function(data){
 			success(data)
 		}
   	});
- }  
+ }
   
  function execDaumPostcode() {
  	new daum.Postcode({
