@@ -1,9 +1,14 @@
 package kr.green.lg.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.lg.service.MemberService;
@@ -22,13 +27,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public ModelAndView singupGet(ModelAndView mv) {
+	public ModelAndView signupGet(ModelAndView mv) {
 		mv.addObject("title", "회원가입");
 		mv.setViewName("/main/signup");		
 		return mv;
 	}
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public ModelAndView singupPost(ModelAndView mv, MemberVO member) {
+	public ModelAndView signupPost(ModelAndView mv, MemberVO member) {
 		boolean res = memberService.signup(member);
 		if(res)
 			mv.setViewName("redirect:/signup/success");
@@ -43,4 +48,13 @@ public class HomeController {
 		return mv;
 	}
 	
+	//ajax
+	@RequestMapping(value = "/check/email", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> checkEmail(@RequestBody MemberVO member){
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		boolean res = memberService.isUser(member);
+		map.put("res", res);
+		return map;
+	}
 }
