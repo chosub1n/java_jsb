@@ -144,11 +144,19 @@
 		    <artifactId>mysql-connector-java</artifactId>
 		    <version>8.0.11</version>
 		</dependency>
+		
 		<!-- spring-jdbc 추가 -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-jdbc</artifactId>
 		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<!-- lombok -->
+		<dependency>
+		  <groupId>org.projectlombok</groupId>
+		  <artifactId>lombok</artifactId>
+		  <version>1.18.24</version>
 		</dependency>
 		        
 	</dependencies>
