@@ -49,7 +49,7 @@ public class MemberServiceImp implements MemberService{
 			String content = 
 				"이메일 인증을 하여 계정을 활성화 하세요. 아래 링크를 클릭해주세요.<br>" +
 				"<a href='http://localhost:8080/springlg/signup/check?me_code="+me_code+"&emaill="+member.getMe_email()+"'>" +
-					"http://localhost:8080/springlg/signup/check?me_code="+me_code+"&me_eamil="+member.getMe_email()+
+					"http://localhost:8080/springlg/signup/check?me_code="+me_code+"&me_email="+member.getMe_email()+
 				"</a>";
 		sendEmail(title, content, member.getMe_email());	
 		}catch(Exception e) {
@@ -109,4 +109,19 @@ public class MemberServiceImp implements MemberService{
 		return false;
 	}
 
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(member == null || member.getMe_email() == null || member.getMe_pw() == null)
+			return null;
+		MemberVO user = memberDao.selectMember(member.getMe_email());
+		if(user == null)
+			return null;
+		
+		if(user.getMe_pos() != 1)
+			return null;
+		
+		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw()))
+			return user;
+		return null;
+	}
 }
