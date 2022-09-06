@@ -14,17 +14,32 @@
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <th>제품 이미지</th>
+        <th>종류</th>
+        <th>코드</th>
+        <th>제목</th>
+        <th>가격</th>
+        <th>기능</th>
       </tr>
     </thead>
     <tbody>
+     <c:forEach items="${list}" var="pro">
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+        <td>
+          <img alt="제품이미지" src="<c:url value="/product/img${pro.pr_thumb}"></c:url>" width="150" height="150">
+        </td>
+        <td>${pro.pr_ca_name}</td>
+	    <td>${pro.pr_code}</td>
+	    <td>
+	      <a href="<c:url value="/product/select?pr_code=${pro.pr_code}"></c:url>">${pro.pr_title}</a>
+	    </td>
+	    <td>${pro.pr_price}</td>
+	    <td>
+	      <a class="btn btn-outline-danger" href="<c:url value="/product/update?pr_code=${pro.pr_code}"></c:url>">수정</a>
+	      <a class="btn btn-outline-warning" href="<c:url value="/product/delete?pr_code=${pro.pr_code}"></c:url>">삭제</a>
+	   </td>
       </tr>
+    </c:forEach>
     </tbody>
   </table>
   <ul class="pagination justify-content-center">
