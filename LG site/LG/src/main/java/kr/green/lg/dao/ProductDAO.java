@@ -26,5 +26,7 @@ public interface ProductDAO {
 
 	int deleteProduct(String pr_code);
 
+	int updateProduct(ProductVO product);
+
 
 }
