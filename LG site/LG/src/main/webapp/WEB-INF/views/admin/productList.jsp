@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <style>
 .btn-del{
-	padding: 0; border: none; backgroud-color: transparent; color: #ffc107;
+	padding: 0; border: none; background-color: transparent; color: #ffc107;
 }
 form.btn:hover .btn-del{
 	color: #fff;
@@ -47,9 +47,10 @@ form.btn{
 	    <td>${pro.pr_price}</td>
 	    <td>
 	      <a class="btn btn-outline-danger" href="<c:url value="/admin/product/update?pr_code=${pro.pr_code}"></c:url>">수정</a>
-	      <form class="btn btn-outline-warning" action="<c:url value="/admin/product/delete"></c:url>" method="post">
+	      <form class="btn btn-outline-warning" action="<c:url value="/admin/product/delete"></c:url>"  method="post">
 	      	<button class="btn-del">삭제</button>
-	      	<input type="hidden" name="pr_code" value="${pro.pr_code}">
+	        <input type="hidden" name="pr_code" value="${pro.pr_code}">
+	      </form>	
 	   </td>
       </tr>
     </c:forEach>
