@@ -37,5 +37,7 @@ public interface ProductDAO {
 
 	void deleteLikes(LikesVO likes);
 
+	ArrayList<ProductVO> selectProductListByLikes(String me_email);
+
 
 }
