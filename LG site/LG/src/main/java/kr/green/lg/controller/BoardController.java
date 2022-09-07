@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +19,7 @@ import kr.green.lg.service.MessageService;
 import kr.green.lg.vo.BoardVO;
 import kr.green.lg.vo.MemberVO;
 
+@Controller
 public class BoardController {
 	
 	@Autowired
@@ -46,10 +48,10 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
-	public ModelAndView boardListPost(ModelAndView mv, String bd_type, Criteria cri) {
-		ArrayList<BoardVO> list = boardService.getBoardList(cri, "NOTICE");
-		int totalCount = boardService.getTotalCount(cri,"NOTICE");
-		PageMaker pm = new PageMaker(totalCount, 2, cri);
+	public ModelAndView boardListGet(ModelAndView mv, String bd_type, Criteria cri) {
+		ArrayList<BoardVO> list = boardService.getBoardList(cri, bd_type);
+		int totalCount = boardService.getTotalCount(cri, bd_type);
+		PageMaker pm = new PageMaker(totalCount, 5, cri);
 		
 		mv.addObject("pm", pm);
 		mv.addObject("list", list);
@@ -63,14 +65,14 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value = "/board/insert", method = RequestMethod.POST)
-	public ModelAndView boardInertPost(ModelAndView mv, BoardVO board, HttpSession session,
+	public ModelAndView boardSelectPost(ModelAndView mv, BoardVO board, HttpSession session,
 			MultipartFile []files, HttpServletResponse response) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		boolean res = boardService.insertBoard(board, user, files);
 		if(res)
 			messageService.message(response, "게시글을 등록했습니다.", "/springlg/product/select?pr_code="+board.getBd_pr_code());
 		else
-			messageService.message(response, "게시글을 등록에 실패했습니다.", "/springlg/product/select?pr_code="+board.getBd_pr_code());			
+			messageService.message(response, "게시글 등록에 실패했습니다.", "/springlg/product/select?pr_code="+board.getBd_pr_code());			
 		return mv;
 	}
 }

@@ -62,7 +62,7 @@ public class BoardServiceImp implements BoardService {
 		BoardVO board = boardDao.selectBoard(bd_num);
 		if(board == null)
 			return false;
-		if(user.getMe_authority() != 10 && board.getBd_me_email().equals(user.getMe_email()))
+		if(user.getMe_authority() != 10 && !board.getBd_me_email().equals(user.getMe_email()))
 			return false;
 		
 		return boardDao.deleteBoard(bd_num) == 1 ? true : false;

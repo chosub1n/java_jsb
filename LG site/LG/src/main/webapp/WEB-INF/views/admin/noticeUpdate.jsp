@@ -29,7 +29,7 @@
 	  <input type="text" class="form-control" name="bd_title" placeholder="공지사항 제목" value="${bo.bd_title}">
 	</div>
 	<div class="form-group">
-	  <textarea class="form-control" name="bd_content">${bd.bd_content}</textarea>
+	  <textarea class="form-control" name="bd_content">${bo.bd_content}</textarea>
 	</div>
 	<button class="btn btn-outline-danger col-12">공지사항 수정</button>
 </form>
@@ -54,7 +54,7 @@ $(function(){
 			$('[name=bd_content]').focus();
 			return false;
 		}
- 	})
+ 	});
 })
 </script>
 </body>

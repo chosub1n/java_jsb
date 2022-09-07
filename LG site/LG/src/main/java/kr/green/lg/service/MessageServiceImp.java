@@ -14,11 +14,11 @@ public class MessageServiceImp implements MessageService {
 	public void categoryMessage(HttpServletResponse response, int res) {
 		String redirectUrl = "/springlg/admin/category";
 		switch(res) {
-		case 1 : message(response, "카데고리 코드는 세 글자이어야 합니다.", redirectUrl); break;//ca_code 길이 3이 아님
-		case -1 : message(response, "카데고리명 또는 카테고리 코드가 중복되었습니다.", redirectUrl); break;//중복
-		case -2 : message(response, "카데고리명 또는 카테고리 코드가 입력되지 않았습니다.", redirectUrl); break;//null
+		case 1 : message(response, "카테고리 코드는 세 글자이어야 합니다.", redirectUrl); break;//ca_code 길이 3이 아님
+		case -1 : message(response, "카테고리명 또는 카테고리 코드가 중복되었습니다.", redirectUrl); break;//중복
+		case -2 : message(response, "카테고리명 또는 카테고리 코드가 입력되지 않았습니다.", redirectUrl); break;//null
 		default:
-			message(response, "카데고리가 등록되었습니다.", redirectUrl);
+			message(response, "카테고리가 등록되었습니다.", redirectUrl);
 		}	
 	}
 
