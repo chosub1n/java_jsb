@@ -44,5 +44,16 @@ public class BoardController {
 		mv.setViewName("board/select");
 		return mv;
 	}
-
+	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
+	public ModelAndView boardListPost(ModelAndView mv, String bd_type, Criteria cri) {
+		ArrayList<BoardVO> list = boardService.getBoardList(cri, "NOTICE");
+		int totalCount = boardService.getTotalCount(cri,"NOTICE");
+		PageMaker pm = new PageMaker(totalCount, 2, cri);
+		
+		mv.addObject("pm", pm);
+		mv.addObject("list", list);
+		mv.addObject("bd_type", bd_type);
+		mv.setViewName("board/list");
+		return mv;
+	}
 }
