@@ -13,7 +13,7 @@
 <div class="container">
 	<h2>게시글 상세</h2>
 	<div class="form-group">
-	  <input type="text" class="form-control" value="${bo.bd_tilte}">
+	  <input type="text" class="form-control" value="${bo.bd_title}">
 	</div>
 	<div class="form-group">
 	  <div class="form-control" style="height:auto; min-height:300px;">${bo.bd_content}</div>
