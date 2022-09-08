@@ -1,14 +1,18 @@
 package kr.green.lg.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,8 +35,8 @@ public class BoardController {
 	public ModelAndView boardDeletePost(ModelAndView mv, Integer bd_num, HttpSession session,
 			HttpServletResponse response, String bd_type) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
+		String redirectUrl = boardService.getDeleteRedirectURL(bd_type, bd_num);
 		boolean res = boardService.deleteBoard(bd_num, user);
-		String redirectUrl = boardService.getDeleteRedirectURL(bd_type);
 		
 		if(res)
 			messageService.message(response, "게시글이 삭제되었습니다.", redirectUrl);
@@ -44,7 +48,7 @@ public class BoardController {
 	public ModelAndView boardSelectGet(ModelAndView mv, Integer bd_num) {
 		BoardVO board = boardService.getBoard(bd_num);
 		mv.addObject("bo", board);
-		mv.setViewName("board/select");
+		mv.setViewName("/board/select");
 		return mv;
 	}
 	@RequestMapping(value = "/board/list", method = RequestMethod.GET)
@@ -74,5 +78,17 @@ public class BoardController {
 		else
 			messageService.message(response, "게시글 등록에 실패했습니다.", "/springlg/product/select?pr_code="+board.getBd_pr_code());			
 		return mv;
+	}
+	
+	@RequestMapping(value = "/qna/list", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<Object, Object> qnaList(@RequestBody Criteria cri){
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		ArrayList<BoardVO> list = boardService.getBoardList(cri, "QNA");
+		int totalCount = boardService.getTotalCount(cri, "QNA");
+		PageMaker pm = new PageMaker(totalCount, 5, cri);
+		map.put("pm", pm);
+		map.put("list", list);
+		return map;
 	}
 }

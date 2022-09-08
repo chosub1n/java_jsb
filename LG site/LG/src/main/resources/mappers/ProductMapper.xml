@@ -56,7 +56,7 @@
 		insert into likes(li_pr_code, li_me_email) values(#{li_pr_code}, #{li_me_email})
 	</insert>
 	<delete id="deleteLikes">
-		delete from likes where li_pr_code = #{li_pr_code} and li_me_eamil = #{li_me_email}
+		delete from likes where li_pr_code = #{li_pr_code} and li_me_email = #{li_me_email}
 	</delete>
 	<select id="selectProductListByLikes" resultType="kr.green.lg.vo.ProductVO">
 		select * from product 
