@@ -66,7 +66,7 @@ public class BoardServiceImp implements BoardService {
 			return false;
 		
 		ArrayList<FileVO> fileList = boardDao.selectFileList(bd_num);
-		if(fileList == null || fileList.size() != 0) {
+		if(fileList != null && fileList.size() != 0) {
 			for(FileVO fileVo : fileList) {
 				deleteFile(fileVo);
 			}
@@ -150,7 +150,7 @@ public class BoardServiceImp implements BoardService {
 		if(nums != null && nums.length != 0) {
 			for(int fi_num : nums) {
 				FileVO fileVo = boardDao.selectFile(fi_num);
-				if(fileVo == null || board.getBd_num() != fileVo.getFi_bd_num())
+				if(fileVo == null || fileVo.getFi_bd_num() != board.getBd_num())
 					continue;
 				deleteFile(fileVo);
 			}
