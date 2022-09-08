@@ -32,7 +32,7 @@ form.btn{
 	<div class="form-group">
 	 <label>첨부파일</label>
 	 <c:forEach items="${fileList}" var="file">	 
-	  <a href="<c:url value="/file${file.fi_num}"></c:url>" download="${file.fi_ori_name}" class="form-control">${file.fi_ori_name}</a>
+	  <a href="<c:url value="/file${file.fi_name}"></c:url>" download="${file.fi_ori_name}" class="form-control">${file.fi_ori_name}</a>
 	 </c:forEach>
 	</div>
 	<c:if test="${user.me_email == bo.bd_me_email && bo.bd_type != 'NOTICE'}">
