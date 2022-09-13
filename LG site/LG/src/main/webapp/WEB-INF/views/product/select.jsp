@@ -33,8 +33,8 @@
 	<h2 class="clearfix">
 		<span class="float-left">제품 상세</span>
 			
-		<i class="fa-regular fa-heart float-right likes <c:if test='${li != null}'>display-none</c:if>"></i>	
-		<i class="fa-solid fa-heart float-right likes likes-ok <c:if test='${li == null}'>display-none</c:if>"></i>
+		<i class="fa-regular fa-heart float-right likes <c:if test="${li != null}">display-none</c:if>"></i>	
+		<i class="fa-solid fa-heart float-right likes likes-ok <c:if test="${li == null}">display-none</c:if>"></i>
 	
 	</h2>
 	<div class="clearfix">

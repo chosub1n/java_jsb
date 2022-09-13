@@ -119,14 +119,26 @@ public class BoardServiceImp implements BoardService {
 	public boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
 		if(board == null || board.getBd_type() == null || board.getBd_pr_code() == null)
 			return false;
-	
-			boolean res = insertBoard(board, user, board.getBd_type());			
-			if(!res)
-				return false;
-		
-			insertFiles(files, board.getBd_num());	
-			return true;
+		try {
+			return insertBoard(board, user, board.getBd_type());
+		}catch(Exception e) {}
+		finally {
+			if(files == null || files.length == 0)
+				return true;
+			for(MultipartFile file : files) {
+				if(file.getOriginalFilename().length() == 0)
+					continue;
+				try {
+					String fi_name = UploadFileUtils.uploadFileUUID(uploadPath, file.getOriginalFilename(), file.getBytes());
+					FileVO fileVo = new FileVO(file.getOriginalFilename(), fi_name, board.getBd_num());
+					boardDao.insertFile(fileVo);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
+		return true;
+	}	
 
 	@Override
 	public boolean isWriter(BoardVO board, MemberVO user) {
