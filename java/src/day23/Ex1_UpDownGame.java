@@ -103,23 +103,23 @@ public class Ex1_UpDownGame {
 	}
 }
 //클래스로 기록 관리
-class Record{
-	private int count;
-	private String name;
-
-	public Record(int count, String name) {
-		this.count = count;
-		this.name = name;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	@Override
-	public String toString() {
-		return "[ " + name + " : " + count + "]";
-	}
-	
-}
+//class Record{
+//	private int count;
+//	private String name;
+//
+//	public Record(int count, String name) {
+//		this.count = count;
+//		this.name = name;
+//	}
+//
+//	public int getCount() {
+//		return count;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "[ " + name + " : " + count + "]";
+//	}
+//	
+//}
 
