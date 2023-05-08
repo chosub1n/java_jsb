@@ -72,7 +72,7 @@ public class BoardController {
 		return mv;
 	}
 	@RequestMapping(value = "/board/insert", method = RequestMethod.POST)
-	public ModelAndView boardSelectPost(ModelAndView mv, BoardVO board, HttpSession session,
+	public ModelAndView boardSelectGet(ModelAndView mv, BoardVO board, HttpSession session,
 			MultipartFile []files, HttpServletResponse response) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		boolean res = boardService.insertBoard(board, user, files);

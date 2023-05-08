@@ -128,7 +128,7 @@ $(function(){
 			}else if(data.res == 1){
 				$('.likes').addClass('display-none');
 				$('.likes-ok').removeClass('display-none');
-				alert('해당 제품을 찜했습니다.')
+				alert('해당 제품을 찜했습니다.');
 			}else{
 				alert('잘못된 접근입니다.')				
 			}

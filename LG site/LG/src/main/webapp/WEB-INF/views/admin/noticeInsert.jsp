@@ -54,7 +54,7 @@ $(function(){
 			$('[name=bd_content]').focus();
 			return false;
 		}
- 	})
+ 	});
 })
 </script>
 </body>
